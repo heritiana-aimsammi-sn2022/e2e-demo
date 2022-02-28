@@ -1,6 +1,6 @@
 # End-to-End Machine Learning Project
 <p align="center">
-<img src="https://miro.medium.com/max/1400/1*9C2BMWR8Lld-iPHlqi7Peg.jpeg" width="600" height="297">
+<img src="https://miro.medium.com/max/1400/1*9C2BMWR8Lld-iPHlqi7Peg.jpeg" width="500" height="297">
 </p>
 
 This repository is an introductory project of end-to-end machine learning, where the different stages of a Machine Learning project lifecycle are discussed. 
