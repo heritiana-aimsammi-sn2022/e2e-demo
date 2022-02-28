@@ -36,6 +36,12 @@ run the gradio_demo  by running the following command in your terminal:
 python src/gradio_demo.py 
 ```
 
+run the streamlit_demo  by running the following command in your terminal:
+
+```
+streamlit run src/streamlit_demo.py 
+```
+
 
 
 ## Ressources 

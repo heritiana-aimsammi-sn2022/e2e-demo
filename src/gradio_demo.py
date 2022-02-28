@@ -1,13 +1,18 @@
-from pyexpat import model
 import joblib
 import gradio as gr 
 import string
 import re 
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer , CountVectorizer
 
 # the path to acces the model 
-model_path ="./models/my_model.pkl"
+model_path ="./models/my_model2.pkl"
+csv_file_path = "./data/SMSSpamCollection.tsv"
+
+data = pd.read_csv(csv_file_path ,  names=['label', 'body_text'], sep='\t')
+X_train,X_test,y_train,y_test = train_test_split(data["body_text"],data["label"], test_size = 0.2, random_state = 10)
 
 classes  =  {
     1:"ham" ,
@@ -29,19 +34,18 @@ def prediction (text):
 
     
     text_preprocessed  = clean_text(text)
+    #print(text_preprocessed)
 
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform([text_preprocessed])
+    vectorizer = CountVectorizer()
+    vectorizer.fit(X_train)
 
-    print(f"the len of X is {len(X.toarray()[0])}")
     
-  #  y_pred = loaded_model.predict([X])
+    X = vectorizer.transform([text_preprocessed])
+    print(X)
 
-   # print(f"The text is {y_pred}")
-
-  #  print(f"je suis la pour le moment {classes[str(y_pred[0])]}")
-
-    return classes[0]
+     
+    prediction = loaded_model.predict(X)
+    return classes[prediction[0]]
 
   
      
